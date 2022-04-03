@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+import 'package:path/path.dart' as p;
 import 'package:testproject/model/data/logindata.dart';
 
 class DatabaseHelper{
@@ -33,7 +33,7 @@ class DatabaseHelper{
     //指定目錄，存在手機哪裡
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     //寫入實體檔案的位置(創建資料庫MyDatabase.db)
-    String path = join(documentsDirectory.path, _databaseName);
+    String path = p.join(documentsDirectory.toString(), _databaseName);
     return await openDatabase(path,version: _databaseVersion, onCreate: _onCreate);
   }
 
